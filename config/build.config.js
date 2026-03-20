@@ -1,29 +1,29 @@
-const webpack = require('webpack');
+const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+	mode: 'production',
 	entry: './index.js',
 	output: {
 		filename: 'index.es5.js',
-		path: './',
+		path: path.resolve(__dirname, '..'),
 		libraryTarget: 'commonjs2',
 	},
 	resolve: {
-		modulesDirectories: [
-			'node_modules',
-		],
-		extensions: ['.js', ''],
+		modules: ['node_modules'],
+		extensions: ['.js'],
 	},
 	module: {
-		loaders: [{
+		rules: [{
 			test: /\.js$/,
-			loader: 'babel',
+			use: 'babel-loader',
 			exclude: /node_modules/,
 		}],
 	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
-	],
+	optimization: {
+		minimizer: [new TerserPlugin()],
+	},
 	target: 'node',
-	externals: [nodeExternals()],
+	externals: [nodeExternals(), /^react(-router)?/],
 };

@@ -1,4 +1,3 @@
-import 'jasmine-collection-matchers';
 import applyValues from '../../../lib/params-applier/values-applier';
 
 describe('values applier', () => {

@@ -1,9 +1,6 @@
 {
-	"ignore": [
-		"node_modules/**/*"
-	],
 	"presets": [
-		"es2015",
-		"react"
+		["@babel/preset-env", { "targets": { "node": "current" } }],
+		"@babel/preset-react"
 	]
 }

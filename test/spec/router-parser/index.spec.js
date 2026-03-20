@@ -1,4 +1,3 @@
-import 'jasmine-collection-matchers';
 import routes from '../../data/routes';
 import { pathsWithParams } from '../../data/paths';
 import parser from '../../../lib/routes-parser';

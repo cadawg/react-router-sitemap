@@ -1,4 +1,3 @@
-import 'jasmine-collection-matchers';
 import replaceParams from '../../../lib/params-applier/params-replacer';
 
 describe('params replacer', () => {

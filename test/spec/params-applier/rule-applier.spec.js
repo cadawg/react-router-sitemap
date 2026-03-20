@@ -1,4 +1,3 @@
-import 'jasmine-collection-matchers';
 import applyRule from '../../../lib/params-applier/rule-applier';
 
 describe('rule applier', () => {
