@@ -42,8 +42,29 @@ export type ParamEntry = Record<string, string | string[]>;
  */
 export type ParamsConfig = Record<string, ParamEntry[]>;
 
+/** Metadata that can be attached to a URL in the sitemap. All fields are optional. */
+export interface UrlMeta {
+  /** Last modified date in ISO 8601 format, e.g. `'2024-01-15'`. */
+  lastmod?: string;
+  /** How frequently the page is likely to change. */
+  changefreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+  /** Priority relative to other URLs on your site, from `0.0` (lowest) to `1.0` (highest). Defaults to `0.5`. */
+  priority?: number;
+}
+
+/**
+ * Per-path metadata overrides. Keys are resolved path strings (after `applyParams`).
+ *
+ * @example
+ * {
+ *   '/': { priority: 1.0, changefreq: 'daily' },
+ *   '/blog': { changefreq: 'weekly', priority: 0.8 },
+ * }
+ */
+export type MetaConfig = Record<string, UrlMeta>;
+
 /** Options for `Sitemap.build()` */
-export interface BuildOptions {
+export interface BuildOptions extends UrlMeta {
   /** Maximum number of URLs per sitemap file. Defaults to 49999. */
   limitCountPaths?: number;
 }
@@ -63,6 +84,13 @@ export default class Sitemap {
    * Paths without a matching rule are kept as-is.
    */
   applyParams(paramsConfig: ParamsConfig): this;
+
+  /**
+   * Set per-path metadata (lastmod, changefreq, priority).
+   * Call after `applyParams` so paths are fully resolved.
+   * Per-path values take precedence over defaults set in `build()`.
+   */
+  applyMeta(metaConfig: MetaConfig): this;
 
   /**
    * Filter paths using the provided rules.
@@ -91,7 +119,7 @@ export default class Sitemap {
  * @param hostname - Root URL of the site.
  * @param paths - Array of URL paths.
  */
-export function sitemapBuilder(hostname?: string, paths?: string[]): unknown;
+export function sitemapBuilder(hostname?: string, paths?: string[], defaults?: UrlMeta, meta?: MetaConfig): string;
 
 /**
  * Parse a React Router route config into a flat array of path strings.

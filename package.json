@@ -1,6 +1,6 @@
 {
   "name": "@snaddyvitch-dispenser/react-router-sitemap",
-  "version": "1.2.6",
+  "version": "2.0.0",
   "description": "Module to generate a sitemap for react-router configuration",
   "repository": {
     "type": "git",
@@ -23,8 +23,7 @@
     "test": "jest",
     "build": "webpack --config ./config/build.config.js",
     "example": "cd example && node ./sitemap-builder.js",
-    "documentation": "documentation build ./lib ./lib/routes-creater ./lib/routes-parser ./lib/paths-filter ./lib/params-applier ./lib/sitemap-builder -f md > api.md",
-    "prepublish": "npm run build"
+"prepublish": "npm run build"
   },
   "author": "Igor Uvarov <kuflash@ya.ru> (http://kuflash.ru)",
   "contributors": [
@@ -52,13 +51,13 @@
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@babel/preset-react": "^7.28.5",
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.39.4",
     "babel-jest": "^30.3.0",
     "babel-loader": "^10.1.1",
-    "documentation": "git://github.com/documentationjs/documentation.git#v4.0.0-beta5",
-    "eslint": "^10.1.0",
+    "eslint": "^9.39.4",
     "eslint-plugin-react": "^7.37.5",
     "jest": "^30.3.0",
+    "react": "^18.3.1",
     "terser-webpack-plugin": "^5.4.0",
     "typescript": "^5.9.3",
     "webpack": "^5.105.4",
@@ -76,9 +75,6 @@
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-router": "^5.0.0 || ^6.0.0 || ^7.0.0"
-  },
-  "dependencies": {
-    "sitemap": "^9.0.1"
   },
   "types": "index.d.ts"
 }

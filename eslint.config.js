@@ -7,9 +7,11 @@ const testGlobals = {
 	expect: 'readonly',
 	beforeEach: 'readonly',
 	afterEach: 'readonly',
+	jest: 'readonly',
 };
 
 module.exports = [
+	{ ignores: ['index.es5.js'] },
 	js.configs.recommended,
 	// CJS files (config scripts)
 	{
