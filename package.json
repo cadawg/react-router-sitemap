@@ -4,7 +4,7 @@
   "description": "Module to generate a sitemap for react-router configuration",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CADawg/react-router-sitemap.git"
+    "url": "git+https://github.com/CADawg/react-router-sitemap.git"
   },
   "keywords": [
     "react",
@@ -23,7 +23,7 @@
     "test": "jest",
     "build": "webpack --config ./config/build.config.js",
     "example": "cd example && node ./sitemap-builder.js",
-"prepublish": "npm run build"
+    "prepublish": "npm run build"
   },
   "author": "Igor Uvarov <kuflash@ya.ru> (http://kuflash.ru)",
   "contributors": [
